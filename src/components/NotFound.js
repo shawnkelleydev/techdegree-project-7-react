@@ -7,7 +7,7 @@ class NotFound extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const query = e.target.querySelector("input").value;
-    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=80193e730b89b3d1e05dec4e1aa42d63&safe_search=1&tags=${query}&per_page=10&format=json&nojsoncallback=1`;
+    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=80193e730b89b3d1e05dec4e1aa42d63&safe_search=1&tags=${query}&per_page=16&format=json&nojsoncallback=1`;
     axios.get(url).then((res) => {
       let photoData = res.data.photos.photo;
       this.props.handle(query, photoData);
@@ -25,7 +25,8 @@ class NotFound extends Component {
       <div>
         <Search submit={(e) => this.handleSubmit(e)} />
         <NavList presets={this.props.presets} />
-        <h1>Not Found</h1>
+        <h3>No Results Found</h3>
+        <p>You search did not return any results. Please try again.</p>
       </div>
     );
   }
