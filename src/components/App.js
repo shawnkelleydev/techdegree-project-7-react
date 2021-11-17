@@ -2,6 +2,7 @@ import "../App.css";
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
+import apiKey from "../config.json";
 
 //components
 import NotFound from "./NotFound";
@@ -22,9 +23,10 @@ class App extends React.Component {
 
   //initial loads
   componentDidMount() {
-    let pianosURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=80193e730b89b3d1e05dec4e1aa42d63&safe_search=1&tags=pianos&per_page=16&format=json&nojsoncallback=1`;
-    let mtnURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=80193e730b89b3d1e05dec4e1aa42d63&safe_search=1&tags=mtns&per_page=16&format=json&nojsoncallback=1`;
-    let tubaURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=80193e730b89b3d1e05dec4e1aa42d63&safe_search=1&tags=tuba&per_page=16&format=json&nojsoncallback=1`;
+    let apikey = apiKey.apiKey;
+    let pianosURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=pianos&per_page=16&format=json&nojsoncallback=1`;
+    let mtnURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=mtns&per_page=16&format=json&nojsoncallback=1`;
+    let tubaURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=tuba&per_page=16&format=json&nojsoncallback=1`;
 
     axios.get(pianosURL).then((res) => {
       let photoData = res.data.photos.photo;
