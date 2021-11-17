@@ -2,13 +2,14 @@ import "../App.css";
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
-import apiKey from "../config.json";
+import apiKey from "./config.js";
 
 //components
 import NotFound from "./NotFound";
 import Home from "./Home";
 import Results from "./Results";
 
+const apikey = apiKey;
 //class component declaration
 class App extends React.Component {
   //the glorious state!
@@ -23,7 +24,6 @@ class App extends React.Component {
 
   //initial loads
   componentDidMount() {
-    let apikey = apiKey.apiKey;
     let pianosURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=pianos&per_page=16&format=json&nojsoncallback=1`;
     let mtnURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=mtns&per_page=16&format=json&nojsoncallback=1`;
     let tubaURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=tuba&per_page=16&format=json&nojsoncallback=1`;

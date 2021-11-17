@@ -2,12 +2,12 @@ import Search from "./Search";
 import NavList from "./NavList";
 import React, { Component } from "react";
 import axios from "axios";
-import apiKey from "../config.json";
+import apiKey from "./config.js";
 
 class NotFound extends Component {
   handleSubmit(e) {
     e.preventDefault();
-    let apikey = apiKey.apiKey;
+    let apikey = apiKey;
     const query = e.target.querySelector("input").value;
     let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=${query}&per_page=16&format=json&nojsoncallback=1`;
     axios.get(url).then((res) => {
