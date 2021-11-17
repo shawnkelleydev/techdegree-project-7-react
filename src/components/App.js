@@ -27,7 +27,7 @@ class App extends React.Component {
     let pianosURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=pianos&per_page=16&format=json&nojsoncallback=1`;
     let mtnURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=mtns&per_page=16&format=json&nojsoncallback=1`;
     let tubaURL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apikey}&safe_search=1&tags=tuba&per_page=16&format=json&nojsoncallback=1`;
-
+    console.log(pianosURL);
     axios.get(pianosURL).then((res) => {
       let photoData = res.data.photos.photo;
       this.setState({ pianosPhotos: this.getPhotoURLs(photoData) });
